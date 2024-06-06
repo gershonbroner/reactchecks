@@ -1,26 +1,49 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from "react"
+import MapMind from "./mapMind/mapMind"
 
-function App() {
+const App =  () => {
+  
+ 
+  useEffect(()=>{
+
+    setTerms( () =>{
+      const data:any = {};
+      for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        const value = key&&localStorage.getItem(key);
+        if (key && value) {
+          data[key] = value;
+        }
+      }
+     return data&&Object.keys(data)
+    }
+
+    ) },[])
+  const [terms,setTerms]=useState<string[]>([])
+  const [input,setInput] = useState<string>("") 
+  const createNerwMap = () => {
+   if(input!==""){
+    setTerms([...terms,input])
+    setInput("")
+   }
+   return;
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div  translate="no">
+      <input type="text" value={input} onChange={(e)=>setInput(e.target.value)}/>
+      <button onClick={createNerwMap}>create</button>
+    {
+    terms.map((term)=>{
+    return (
+    <div  key={term}>
+     <MapMind mainTerm={term}/>
+    <div style={{borderBottom:" dashed red"}}/> 
     </div>
-  );
-}
+    )
+    })
+    }
 
-export default App;
+    </div>
+  )
+ }
+export default App
