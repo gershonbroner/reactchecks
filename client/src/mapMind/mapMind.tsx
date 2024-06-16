@@ -4,8 +4,7 @@ import { FaLongArrowAltRight } from "react-icons/fa";
 import { TbPointFilled } from "react-icons/tb";
 import { PickerColor } from "./PickerColor";
 import { AiOutlineBgColors } from "react-icons/ai";
-// import { changeObj } from "../../server/index";
-const chang = require("../../server/index");
+
 export interface StructureMap {
   [key: string]: StructureMap | null;
 }
@@ -215,7 +214,6 @@ const MapMind = ({ mainTerm }: MapMindProps) => {
 
   return (
     <>
-      <button onClick={() => chang(baseObj)}>changeobj</button>
       <Term
         term={mainTerm}
         obj={baseObj[mainTerm]}
