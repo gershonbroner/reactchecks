@@ -4,6 +4,7 @@ import { FaLongArrowAltRight } from "react-icons/fa";
 import { TbPointFilled } from "react-icons/tb";
 import { PickerColor } from "./PickerColor";
 import { AiOutlineBgColors } from "react-icons/ai";
+import axios from "axios";
 
 export interface StructureMap {
   [key: string]: StructureMap | null;
@@ -209,6 +210,14 @@ const MapMind = ({ mainTerm }: MapMindProps) => {
       localStorage.setItem(mainTerm, JSON.stringify(baseObj));
     } catch (error) {
       console.error("Error saving to localStorage", error);
+    }
+  }, [baseObj, mainTerm]);
+
+  useEffect(() => {
+    if (baseObj[mainTerm]) {
+      axios.post("http://localhost:3001/editobject", baseObj).then((res) => {
+        console.log(res.data);
+      });
     }
   }, [baseObj, mainTerm]);
 
