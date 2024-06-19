@@ -32,7 +32,6 @@ app.post("/editobject", (req: Request, res: Response) => {
       }
     }
     if (!flag) {
-      console.log("hu");
       Data[Object.keys(jsonData)[0]] = jsonData[Object.keys(jsonData)[0]];
     }
     flag = false;
@@ -55,25 +54,4 @@ app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
 
-// const changeObj = (obj) => {
-//   // const filePath = path.resolve(__dirname, "data.json");
-//   // fs.readFile(filePath, "utf8", (err, data) => {
-//   //   if (err) {
-//   //     console.error(err);
-//   //     return;
-//   //   }
-
-//   //   let jsonData = JSON.parse(data);
-
-//   //   jsonData.react = { hooks: null };
-
-//   //   let updatedJson = JSON.stringify(jsonData, null, 2);
-
-//   fs.writeFile("data.json", obj, "utf8", (err) => {
-//     if (err) {
-//       console.error(err);
-//       return;
-//     }
-//     console.log("JSON file has been updated.");
-//   });
-// };
+ 

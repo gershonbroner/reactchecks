@@ -1,3 +1,12 @@
 {
-  
+  "skiils  front-end": {
+    "redux": null,
+    "recoil": null,
+    "ssr": null,
+    "react-lazy": null,
+    "Jest: A delightful JavaScript testing framework with a focus on simplicity.": null,
+    "React Testing Library: Encourages best practices for testing components.": null,
+    "Storybook": null,
+    "material-ui": null
+  }
 }
